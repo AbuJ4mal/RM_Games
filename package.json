@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "discord.js": "^13.16.0"
+  },
+  "name": "games_bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
