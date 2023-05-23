@@ -234,13 +234,12 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const fetch = require('cross-fetch');
 // تحميل الخط إذا لزم الأمر
 //registerFont('path/to/font.ttf', { family: 'FontName' });
-
 client.on('guildMemberAdd', async (member) => {
   const canvas = createCanvas(1536, 1536);
   const ctx = canvas.getContext('2d');
 
   // تحميل صورة الخلفية
-  const backgroundImage = await loadImage('./src/welcome.png');
+  const backgroundImage = await loadImage('./welcome.png');
 
   // رسم الصورة في الخلفية
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
@@ -250,7 +249,7 @@ client.on('guildMemberAdd', async (member) => {
   const personAvatarURL = member.user.displayAvatarURL({ format: 'png' });
 
   // جلب صورة الأفتار من Discord وتحويلها إلى Buffer
-  const avatarBuffer = await fetch(personAvatarURL).then((response) => response.buffer());
+  const avatarBuffer = await fetch(personAvatarURL).then((response) => resp>
 
   // تحميل الأفتار من الـ Buffer
   const avatarImage = await loadImage(avatarBuffer);
@@ -265,7 +264,7 @@ client.on('guildMemberAdd', async (member) => {
   // رسم الأفتار في Canvas المدور
   avatarCtx.save();
   avatarCtx.beginPath();
-  avatarCtx.arc(avatarSize / 2, avatarSize / 2, avatarSize / 2, 0, Math.PI * 2, true);
+  avatarCtx.arc(avatarSize / 2, avatarSize / 2, avatarSize / 2, 0, Math.PI >
   avatarCtx.closePath();
   avatarCtx.clip();
   avatarCtx.drawImage(avatarImage, 0, 0, avatarSize, avatarSize);
@@ -274,20 +273,20 @@ client.on('guildMemberAdd', async (member) => {
   // حساب موقع الأفتار والنص
   const avatarX = (canvas.width - avatarSize) / 20;
   const avatarY = (canvas.height - avatarSize) / 1.55;
-  const textY = backgroundImage / 1.7;
+  const textY = backgroundImage.height / 0.90;
 
   // رسم الأفتار المدور
   ctx.drawImage(avatarCanvas, avatarX, avatarY);
 
   // كتابة اسم الشخص على الصورة
-  ctx.font = '40px Arial';
+  ctx.font = '60px Arial';
   ctx.fillStyle = '#FFFFFF';
   ctx.textAlign = 'center';
-  ctx.fillText(personName, backgroundImage.width / 1.45, textY);
+  ctx.fillText(personName, backgroundImage.width / 0.80, textY);
 
   // إنشاء MessageAttachment وإرسالها في رسالة الترحيب
   const welcome = new MessageAttachment(canvas.toBuffer(), 'welcome.png');
-  member.guild.channels.cache.get('1106650272694030526').send({content: `مرحبًا بك في السيرفر, ${member}!`, files: [welcome]});
+  member.guild.channels.cache.get('1106650272694030526').send({content: `مر>
 });
 
 
